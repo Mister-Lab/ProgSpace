@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app>
+    <input type="text" ng-model="query"/>
+    <select ng-model="order">
+        <option value="username">Organiser par nom</option>
+        <option value="content">Organiser par contenu</option>
+    </select>  
+
+    <div ng-controller="CommentsCtrl">
+        <div ng-repeat="comment in comments |
+        filter:{content: query} | orderBy:order">
+            <p>
+                <strong>{{comment.username}}</strong><br>
+                {{comment.content}}
+            </p>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <script>
+        function CommentsCtrl($scope){
+
+            $scope.comments =   [
+                                    {
+                                        "username": "Susanna",
+                                        "city": "Dubois",
+                                        "email": "susannamccormick@quonk.com",
+                                        "content": "Velit proident qui sit elit eu tempor."
+                                    },
+                                    {
+                                        "username": "Sanford",
+                                        "city": "Williamson",
+                                        "email": "sanfordmccormick@quonk.com",
+                                        "content": "Aliquip velit incididunt anim in aute."
+                                    },
+                                    {
+                                        "username": "Dolly",
+                                        "city": "Glendale",
+                                        "email": "dollymccormick@quonk.com",
+                                        "content": "Laborum aute id nulla consequat."
+                                    },
+                                    {
+                                        "username": "Clark",
+                                        "city": "Drytown",
+                                        "email": "clarkmccormick@quonk.com",
+                                        "content": "Anim cillum laboris elit ."
+                                    },
+                                    {
+                                        "username": "John",
+                                        "city": "Bend",
+                                        "email": "johnmccormick@quonk.com",
+                                        "content": "Minim mollit deserunt qui eu."
+                                    },
+                                    {
+                                        "username": "Esperanza",
+                                        "city": "Glenbrook",
+                                        "email": "esperanzamccormick@quonk.com",
+                                        "content": "Exercitation eiusmod fugiat tempor "
+                                    }
+                                ];
+        }
+    </script>
+</body>
+</html>
